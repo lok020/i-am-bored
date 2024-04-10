@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import userData from "../../data/userData.json";
 
-export default function LabeledInput({type, id, text}) {
+export default function LabeledInput({type, id, text, placeholder, recommendation=true}) {
     const [input, setInput] = useState('');
     const datas = userData.user;
 
@@ -10,18 +10,19 @@ export default function LabeledInput({type, id, text}) {
     }
 
     return (
-        <>
+        <div>
             <label htmlFor={id} className="pr-2">{text}</label>
             <input type={type} id={id} name={text} value={input} autoComplete="off"
-            placeholder="Enter your name" onChange={(e) => setInput(e.currentTarget.value)}
+            placeholder={placeholder} onChange={(e) => setInput(e.currentTarget.value)}
             className="border-2 border-slate-300 rounded-md px-2 py-1"/>
             <div className="inline-flex mt-1">
                 {/* show recommendations when:
-                1. user typed
-                2. JSON list includes input string (not case sensitive)
-                3. user input not equal to the recommendation
+                1. recommendation is on (default is on)
+                2. user typed
+                3. JSON list includes input string (not case sensitive)
+                4. user input not equal to the recommendation
                 */}
-                {input && datas.map((data) => data[id].toLowerCase().includes(input.toLowerCase()) && input.toLowerCase() !== data[id].toLowerCase() &&
+                {recommendation && input && datas.map((data) => data[id].toLowerCase().includes(input.toLowerCase()) && input.toLowerCase() !== data[id].toLowerCase() &&
                 <button key={data[id]} className="flex hover:invert" value={data[id]} onClick={handleRecommendationClick}>
                     <div className={`text-sky-300`}>
                         &#9668;
@@ -32,6 +33,6 @@ export default function LabeledInput({type, id, text}) {
                 </button>
                 )}
             </div>
-        </>
+        </div>
     );
 }
