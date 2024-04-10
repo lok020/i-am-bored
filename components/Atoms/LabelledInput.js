@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import userData from "../../data/userData.json";
 
-export default function LabeledInput({type, id, text, placeholder, recommendation=true}) {
+export default function LabelledInput({type, id, text, placeholder, recommendation=true}) {
     const [input, setInput] = useState('');
     const datas = userData.user;
 

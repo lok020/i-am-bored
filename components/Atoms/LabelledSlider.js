@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function LabeledSlider({id, text, min, max, minText, maxText, step}) {
+export default function LabelledSlider({id, text, min, max, minText, maxText, step}) {
 
     return (
         <div>
