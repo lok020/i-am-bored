@@ -12,7 +12,7 @@ export default function LabelledInput({type, id, text, placeholder, recommendati
     return (
         <div>
             <label htmlFor={id} className="pr-2">{text}</label>
-            <input type={type} id={id} name={text} value={input} autoComplete="off"
+            <input type={type} id={id} name={text} value={input} autoComplete="off" required
             placeholder={placeholder} onChange={(e) => setInput(e.currentTarget.value)}
             className="border-2 border-slate-300 rounded-md px-2 py-1"/>
             <div className="inline-flex mt-1">
