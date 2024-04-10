@@ -5,7 +5,7 @@ export default function InputBox({type, id, text}) {
     return (
         <>
             <label htmlFor={id}>{text}</label>
-            <input type={type} id={id} name={text}/>
+            <input type={type} id={id} name={text} autoComplete="off"/>
         </>
     );
 }
