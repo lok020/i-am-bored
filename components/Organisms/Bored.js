@@ -4,12 +4,12 @@ import BoredForm from "../Molecules/BoredForm";
 import BoredResult from "../Molecules/BoredResult";
 
 export default function Bored() {
-    const [data, setData] = useState({});
+    const [data, setData] = useState(null);
 
     return (
         <boredContext.Provider value={{data, setData}}>
             <BoredForm />
-            <BoredResult />
+            {data && <BoredResult />}
         </boredContext.Provider>
     );
 }
