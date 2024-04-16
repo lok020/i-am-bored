@@ -6,7 +6,7 @@ import LabelledDropDown from "../Atoms/LabelledDropdown";
 import Button from "../Atoms/Button";
 
 export default function BoredForm() {
-    const {setData} = useContext(boredContext);
+    const {setData, localData, setLocalData} = useContext(boredContext);
 
     const handleOnSubmit = (e) => {
         e.preventDefault();
@@ -17,15 +17,20 @@ export default function BoredForm() {
     const updateNameRecommendation = () => {
         // save inside userData.json locally
         let name = document.getElementById('name').value;
-        let localData = JSON.parse(localStorage.getItem('iambored-users'));
 
         // init if there are no users in localStorage
-        if (!localData) return localStorage.setItem('iambored-users', JSON.stringify({name:[name]}));
+        if (!localStorage.hasOwnProperty('iambored-users')){
+            const payload = {name:[name]};
+            setLocalData(payload);
+            return localStorage.setItem('iambored-users', JSON.stringify(payload));
+        }
+        setLocalData(JSON.parse(localStorage.getItem('iambored-users')));
         // TODO: check if name exist in userData.user
-        if(localData.length < 10){
+        if(localData.name.length < 10){
             let newLocalData = localData;
-            // newLocalData.name.push();
-            // localStorage.setItem('iambored-users', JSON.stringify(newLocalData));
+            newLocalData.name.push(name);
+            setLocalData(newLocalData);
+            localStorage.setItem('iambored-users', JSON.stringify(newLocalData));
         }
         else{
             console.log('too much');

@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { boredContext } from "../Context/Context";
 
 export default function LabelledInput({type, id, text, placeholder, recommendation=true}) {
     const [input, setInput] = useState('');
-    const [localData, setLocalData] = useState({});
+    const {localData, setLocalData} = useContext(boredContext);
 
     useEffect(() => {
         localStorage.hasOwnProperty('iambored-users') && setLocalData(JSON.parse(localStorage.getItem('iambored-users')));
