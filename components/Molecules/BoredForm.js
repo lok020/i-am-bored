@@ -6,12 +6,35 @@ import LabelledDropDown from "../Atoms/LabelledDropdown";
 import Button from "../Atoms/Button";
 
 export default function BoredForm() {
-    const {setData} = useContext(boredContext);
+    const {setData, localData, setLocalData} = useContext(boredContext);
 
-    const fetchData = async(e) => {
+    const handleOnSubmit = (e) => {
         e.preventDefault();
-        // TODO: save inside userData.json locally
-        // let name = document.getElementById('name').value;
+        updateNameRecommendation();
+        fetchData();
+    }
+
+    const updateNameRecommendation = () => {
+        let name = document.getElementById('name').value;
+
+        // init if there are no users in localStorage
+        if (!localStorage.hasOwnProperty('iambored-users')){
+            const payload = {name:[name]};
+            setLocalData(payload);
+            return localStorage.setItem('iambored-users', JSON.stringify(payload));
+        }
+        if(!localData.name.includes(name)){
+            setLocalData(JSON.parse(localStorage.getItem('iambored-users')));
+            let newLocalData = localData;
+            if(localData.name.length >= 5)
+                newLocalData.name.shift();
+            newLocalData.name.push(name);
+            setLocalData(newLocalData);
+            localStorage.setItem('iambored-users', JSON.stringify(newLocalData));
+        }
+    }
+
+    const fetchData = async() => {
         let accessibility = document.getElementById('accessibility').value;
         let price = document.getElementById('price').value;
         let type = document.getElementById('type').value;
@@ -28,7 +51,7 @@ export default function BoredForm() {
     }
 
     return (
-        <form onSubmit={fetchData}>
+        <form onSubmit={handleOnSubmit}>
             <LabelledInput type='text' id='name' text='Your name:' placeholder='Enter your name'/>
             <br/>
             <LabelledSlider id='accessibility' text='How accessible do you want an event to be?' min={0} max={1} minText={'Very Accessible'} maxText={'Inaccessible'} step={0.01}/>
