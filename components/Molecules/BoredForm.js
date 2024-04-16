@@ -8,10 +8,41 @@ import Button from "../Atoms/Button";
 export default function BoredForm() {
     const {setData} = useContext(boredContext);
 
-    const fetchData = async(e) => {
+    const handleOnSubmit = (e) => {
         e.preventDefault();
-        // TODO: save inside userData.json locally
-        // let name = document.getElementById('name').value;
+        updateNameRecommendation();
+        fetchData();
+    }
+
+    const fetchLocalUserData = async() => {
+        try{
+            const res = await fetch('/data/localData.json');
+            const userData = await res.json();
+            return userData;
+        }catch(err){
+            console.error('Error: ', err);
+        }
+    }
+
+    const updateNameRecommendation = async() => {
+        // save inside userData.json locally
+        let name = document.getElementById('name').value;
+        const payload = {
+            name: name
+        }
+        let localData = await fetchLocalUserData();
+
+        // TODO: check if name exist in userData.user
+        if(localData?.user){
+            // localData.user.push(payload);
+        }
+        else{
+            // remove 1
+            // add the most recent 1
+        }
+    }
+
+    const fetchData = async() => {
         let accessibility = document.getElementById('accessibility').value;
         let price = document.getElementById('price').value;
         let type = document.getElementById('type').value;
@@ -28,7 +59,7 @@ export default function BoredForm() {
     }
 
     return (
-        <form onSubmit={fetchData}>
+        <form onSubmit={handleOnSubmit}>
             <LabelledInput type='text' id='name' text='Your name:' placeholder='Enter your name'/>
             <br/>
             <LabelledSlider id='accessibility' text='How accessible do you want an event to be?' min={0} max={1} minText={'Very Accessible'} maxText={'Inaccessible'} step={0.01}/>

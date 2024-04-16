@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import userData from "../../data/userData.json";
+import localData from "../../public/data/localData.json";
 
 export default function LabelledInput({type, id, text, placeholder, recommendation=true}) {
     const [input, setInput] = useState('');
-    const datas = userData.user;
+    const userData = localData.user;
 
     const handleRecommendationClick = (e) => {
         setInput(e.currentTarget.value);
@@ -22,7 +22,7 @@ export default function LabelledInput({type, id, text, placeholder, recommendati
                 3. JSON list includes input string (not case sensitive)
                 4. user input not equal to the recommendation
                 */}
-                {recommendation && input && datas.map((data) => data[id].toLowerCase().includes(input.toLowerCase()) && input.toLowerCase() !== data[id].toLowerCase() &&
+                {recommendation && input && userData.map((data) => data[id].toLowerCase().includes(input.toLowerCase()) && input.toLowerCase() !== data[id].toLowerCase() &&
                 <button key={data[id]} className="flex hover:invert" value={data[id]} onClick={handleRecommendationClick}>
                     <div className={`text-sky-300`}>
                         &#9668;
