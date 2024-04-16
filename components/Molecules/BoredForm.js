@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import { boredContext } from "../Context/Context";
 import LabelledInput from "../Atoms/LabelledInput";
 import LabelledSlider from "../Atoms/LabelledSlider";
 import LabelledDropDown from "../Atoms/LabelledDropdown";
 import Button from "../Atoms/Button";
 
-export default function Form() {
+export default function BoredForm() {
+    const {setData} = useContext(boredContext);
+
     const fetchData = async(e) => {
         e.preventDefault();
         // TODO: save inside userData.json locally
@@ -17,7 +20,7 @@ export default function Form() {
             const res = await fetch(`http://www.boredapi.com/api/activity?accessibility=${accessibility}&?price=${price}&?type=${type}`);
             if(res.ok){
                 const data = await res.json();
-                console.log(data);
+                setData(data);
             }
         }catch(err){
             console.error('Error: ', err);

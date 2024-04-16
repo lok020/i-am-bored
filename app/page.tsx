@@ -1,11 +1,11 @@
 "use client"
 
-import Form from "./../components/Molecules/Form";
+import Bored from "../components/Organisms/Bored";
 
 export default function Home() {
   return (
     <div className="p-5">
-      <Form />
+      <Bored />
     </div>
   );
 }
