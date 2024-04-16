@@ -15,7 +15,6 @@ export default function BoredForm() {
     }
 
     const updateNameRecommendation = () => {
-        // save inside userData.json locally
         let name = document.getElementById('name').value;
 
         // init if there are no users in localStorage
@@ -24,18 +23,14 @@ export default function BoredForm() {
             setLocalData(payload);
             return localStorage.setItem('iambored-users', JSON.stringify(payload));
         }
-        setLocalData(JSON.parse(localStorage.getItem('iambored-users')));
-        // TODO: check if name exist in userData.user
-        if(localData.name.length < 10){
+        if(!localData.name.includes(name)){
+            setLocalData(JSON.parse(localStorage.getItem('iambored-users')));
             let newLocalData = localData;
+            if(localData.name.length >= 5)
+                newLocalData.name.shift();
             newLocalData.name.push(name);
             setLocalData(newLocalData);
             localStorage.setItem('iambored-users', JSON.stringify(newLocalData));
-        }
-        else{
-            console.log('too much');
-            // remove 1
-            // add the most recent 1
         }
     }
 
