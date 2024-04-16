@@ -14,29 +14,21 @@ export default function BoredForm() {
         fetchData();
     }
 
-    const fetchLocalUserData = async() => {
-        try{
-            const res = await fetch('/data/localData.json');
-            const userData = await res.json();
-            return userData;
-        }catch(err){
-            console.error('Error: ', err);
-        }
-    }
-
-    const updateNameRecommendation = async() => {
+    const updateNameRecommendation = () => {
         // save inside userData.json locally
         let name = document.getElementById('name').value;
-        const payload = {
-            name: name
-        }
-        let localData = await fetchLocalUserData();
+        let localData = JSON.parse(localStorage.getItem('iambored-users'));
 
+        // init if there are no users in localStorage
+        if (!localData) return localStorage.setItem('iambored-users', JSON.stringify({name:[name]}));
         // TODO: check if name exist in userData.user
-        if(localData?.user){
-            // localData.user.push(payload);
+        if(localData.length < 10){
+            let newLocalData = localData;
+            // newLocalData.name.push();
+            // localStorage.setItem('iambored-users', JSON.stringify(newLocalData));
         }
         else{
+            console.log('too much');
             // remove 1
             // add the most recent 1
         }
