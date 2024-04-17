@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import {boredContext} from "../Context/Context";
-import BoredForm from "../Molecules/BoredForm";
-import BoredResult from "../Molecules/BoredResult";
+import BoredAPIForm from "../Molecules/BoredAPIForm";
+import BoredAPIResult from "../Molecules/BoredAPIResult";
 
-export default function Bored() {
+export default function BoredAPI() {
     const [localData, setLocalData] = useState({});
     const [data, setData] = useState(null);
 
     return (
         <boredContext.Provider value={{data, setData, localData, setLocalData}}>
-            <BoredForm />
-            {data && <BoredResult />}
+            <BoredAPIForm />
+            {data && <BoredAPIResult />}
         </boredContext.Provider>
     );
 }
