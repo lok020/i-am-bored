@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { boredContext } from "../Context/Context";
 import Link from "next/link";
 
-export default function BoredResult (){
+export default function BoredAPIResult (){
     const {data} = useContext(boredContext);
 
     return (
