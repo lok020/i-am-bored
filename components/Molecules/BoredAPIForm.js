@@ -5,7 +5,7 @@ import LabelledSlider from "../Atoms/LabelledSlider";
 import LabelledDropDown from "../Atoms/LabelledDropdown";
 import Button from "../Atoms/Button";
 
-export default function BoredForm() {
+export default function BoredAPIForm() {
     const {setData, localData, setLocalData} = useContext(boredContext);
 
     const handleOnSubmit = (e) => {
