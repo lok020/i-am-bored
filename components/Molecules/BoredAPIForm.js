@@ -9,6 +9,14 @@ export default function BoredAPIForm() {
     const {setData, localData, setLocalData} = useContext(boredContext);
     const [activity, setActivity] = useState("random");
 
+    // component list for display based on activity state
+    const component = {
+        'random': <></>,
+        'accessibility': <LabelledSlider id='accessibility' text='How accessible do you want an event to be?' min={0} max={1} minText={'Very Accessible'} maxText={'Inaccessible'} step={0.01}/>,
+        'price': <LabelledSlider id='price' text='How costly do you want an event to be?' min={0} max={1} minText={'Free'} maxText={'Expensive'} step={0.01}/>,
+        'type': <LabelledDropDown id='type' text='What is the type of the activity do you enjoy?' list={["education", "recreational", "social", "diy", "charity", "cooking", "relaxation", "music", "busywork"]}/>
+    };
+
     const handleOnSubmit = (e) => {
         e.preventDefault();
         updateNameRecommendation();
@@ -73,13 +81,7 @@ export default function BoredAPIForm() {
         <form onSubmit={handleOnSubmit}>
             <LabelledInput type='text' id='name' text='Your name:' placeholder='Enter your name'/>
             <LabelledDropDown id='activity' text='What is the metric you want the activity based on?' list={["random", "accessibility", "price", "type"]} update={setActivity}/>
-            <br/>
-
-
-            <LabelledSlider id='accessibility' text='How accessible do you want an event to be?' min={0} max={1} minText={'Very Accessible'} maxText={'Inaccessible'} step={0.01}/>
-            <LabelledSlider id='price' text='How costly do you want an event to be?' min={0} max={1} minText={'Free'} maxText={'Expensive'} step={0.01}/>
-            <LabelledDropDown id='type' text='What is the type of the activity do you enjoy?' list={["education", "recreational", "social", "diy", "charity", "cooking", "relaxation", "music", "busywork"]}/>
-            <br/>
+            <div className="py-3">{component[activity]}</div>
             <Button type='submit' text='Submit'/>
         </form>
     );
