@@ -1,20 +1,13 @@
 ## Introduction
-This is an Next.js project for people with boredom. Designed to have multiple tabs with different functionality. Each tabs will utilize distinct APIs.
+This is a Next.js project designed for people with boredom. There are multiple tabs that utilize different APIs and aim to give you entertainment.
+
 List of tabs:
-1. Home - Greeting page
-2. [Bored API](https://www.boredapi.com/) - Answer a list of questions to show what you can do
+- Home - Greeting page
+- [Bored API](https://www.boredapi.com/) - Answer a list of questions to show what you can do
 
-## Getting Started
-Run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Step by step instruction
+1. Clone code to your machine
+2. Open Terminal
+3. Change your current directory into the code directory
+4. run `npm run dev`
+5. Open [http://localhost:3000](http://localhost:3000)
