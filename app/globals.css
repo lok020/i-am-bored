@@ -19,3 +19,14 @@ body{
     animation-delay: 0s;
     animation-iteration-count: 1;
 }
+
+.nav{
+    color: gray;
+}
+
+.nav:hover, .nav-selected{
+    color: #e76f51;
+    font-weight: bold;
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+}
