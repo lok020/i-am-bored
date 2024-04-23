@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { boredContext } from "../Context/Context";
 import LabelledInput from "../Atoms/LabelledInput";
 import LabelledSlider from "../Atoms/LabelledSlider";
@@ -7,6 +7,7 @@ import Button from "../Atoms/Button";
 
 export default function BoredAPIForm() {
     const {setData, localData, setLocalData} = useContext(boredContext);
+    const [activity, setActivity] = useState("random");
 
     const handleOnSubmit = (e) => {
         e.preventDefault();
@@ -35,14 +36,32 @@ export default function BoredAPIForm() {
     }
 
     const fetchData = async() => {
-        let accessibility = document.getElementById('accessibility').value;
-        let price = document.getElementById('price').value;
-        let type = document.getElementById('type').value;
+        const basedUrl = "http://www.boredapi.com/api/activity";
+
+        // get the additional query based on picked activity
+        let additionalURL = "";
+        switch(activity) {
+            case 'accessibility':
+                const accessibility = document.getElementById('accessibility').value;
+                additionalURL = `?minaccessibility=0&maxaccessibility=${accessibility}`;
+                break;
+            case 'price':
+                const price = document.getElementById('price').value;
+                additionalURL = `?minprice=0&maxprice=${price}`;
+                break;
+            case 'type':
+                const type = document.getElementById('type').value;
+                additionalURL = `?type=${type}`;
+                break;
+            default:
+                additionalURL = "/";
+        }
 
         try{
-            const res = await fetch(`http://www.boredapi.com/api/activity?accessibility=${accessibility}&?price=${price}&?type=${type}`);
+            const res = await fetch(`${basedUrl}${additionalURL}`);
             if(res.ok){
                 const data = await res.json();
+                console.log(data);
                 setData(data);
             }
         }catch(err){
@@ -53,7 +72,10 @@ export default function BoredAPIForm() {
     return (
         <form onSubmit={handleOnSubmit}>
             <LabelledInput type='text' id='name' text='Your name:' placeholder='Enter your name'/>
+            <LabelledDropDown id='activity' text='What is the metric you want the activity based on?' list={["random", "accessibility", "price", "type"]} update={setActivity}/>
             <br/>
+
+
             <LabelledSlider id='accessibility' text='How accessible do you want an event to be?' min={0} max={1} minText={'Very Accessible'} maxText={'Inaccessible'} step={0.01}/>
             <LabelledSlider id='price' text='How costly do you want an event to be?' min={0} max={1} minText={'Free'} maxText={'Expensive'} step={0.01}/>
             <LabelledDropDown id='type' text='What is the type of the activity do you enjoy?' list={["education", "recreational", "social", "diy", "charity", "cooking", "relaxation", "music", "busywork"]}/>
