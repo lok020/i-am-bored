@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Link from "next/link";
+import NavBar from "../components/Molecules/NavBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,13 +15,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const navs = [
+    {path:"/", name: "Home"},
+    {path:"/BoredAPI", name: "BoredAPI"},
+  ];
+
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="flex w-full">
-          <Link href={'/'}>Home</Link>
-          <Link href={'/BoredAPI'}>BoredAPI</Link>
-        </div>
+        <NavBar navs={navs}/>
         {children}
       </body>
     </html>
