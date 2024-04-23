@@ -74,7 +74,6 @@ export default function BoredAPIForm() {
             const res = await fetch(`${basedUrl}${additionalURL}`);
             if(res.ok){
                 const data = await res.json();
-                console.log(data);
                 setData(data);
             }
         }catch(err){
