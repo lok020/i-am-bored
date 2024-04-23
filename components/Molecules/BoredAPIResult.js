@@ -7,6 +7,7 @@ export default function BoredAPIResult (){
 
     return (
         <div className="grid">
+            {data.error && <>{`Error: ${data.error}`}</>}
             {data.activity}
             {data.link && <Link href={data.link} target="_blank">{data.link}</Link>}
         </div>
