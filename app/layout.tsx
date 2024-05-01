@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <NavBar navs={navs}/>
-        {children}
+        <div className={"mt-2 p-3 bg-neutral-100 rounded-lg"}>{children}</div>
       </body>
     </html>
   );
