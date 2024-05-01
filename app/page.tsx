@@ -5,7 +5,7 @@ export default function Home() {
     <div>
       <h1>i-am-bored</h1>
       <p>
-        An App for killing boredom
+        An App to cure boredom
       </p>
     </div>
   );
