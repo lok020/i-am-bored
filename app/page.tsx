@@ -2,8 +2,11 @@
 
 export default function Home() {
   return (
-    <>
-      An App for killing boredom
-    </>
+    <div>
+      <h1>i-am-bored</h1>
+      <p>
+        An App for killing boredom
+      </p>
+    </div>
   );
 }
