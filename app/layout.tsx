@@ -22,7 +22,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={inter.className} suppressHydrationWarning={true}>
         <NavBar navs={navs}/>
         <div className={"mt-2 p-3 bg-neutral-100 rounded-lg"}>{children}</div>
       </body>
