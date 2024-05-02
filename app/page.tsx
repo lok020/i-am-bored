@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div className="font-mono">
       <h1 className="relative w-[max-content] font-bold text-4xl before:absolute before:inset-0 before:animate-typewriter
-      before:bg-white after:bg-black after:absolute after:inset-0 after:w-[0.125em] after:animate-caret">{title}</h1>
+      before:bg-neutral-100 after:bg-black after:absolute after:inset-0 after:w-[0.125em] after:animate-caret">{title}</h1>
       <div className="text-black/60">
         <p>{intro}</p>
         <br/>
