@@ -11,7 +11,7 @@ export default function NavBar({navs}) {
 
     return(
         <navBarContext.Provider value={{curNav, setCurNav}}>
-            <div className="flex w-full gap-2">
+            <div className="flex w-full gap-4">
                 {navs.map(({path, name}) => <Nav key={name} path={path} name={name}/>)}
             </div>
         </navBarContext.Provider>
