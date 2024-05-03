@@ -4,7 +4,7 @@ interface LocalDataInterface{
     setLocalData: () => {}
 }
 
-interface BoredAPIResultInterface{
+interface BoredAPIInterface{
     boredAPIData: null,
     setBoredAPIData: () => {}
 }

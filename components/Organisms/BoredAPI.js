@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {boredContext} from "../Context";
+import {boredAPIContext} from "../Context";
 import BoredAPIForm from "../Molecules/BoredAPIForm";
 import BoredAPIResult from "../Molecules/BoredAPIResult";
 
@@ -12,9 +12,9 @@ export default function BoredAPI() {
     }, []);
 
     return (
-        <boredContext.Provider value={{data, setData, localData, setLocalData}}>
+        <boredAPIContext.Provider value={{data, setData, localData, setLocalData}}>
             <BoredAPIForm />
             {data && <BoredAPIResult />}
-        </boredContext.Provider>
+        </boredAPIContext.Provider>
     );
 }

@@ -1,12 +1,12 @@
 import React, { useContext, useState } from "react";
-import { boredContext } from "../Context";
+import { boredAPIContext } from "../Context";
 import LabelledInput from "../Atoms/LabelledInput";
 import LabelledSlider from "../Atoms/LabelledSlider";
 import LabelledDropDown from "../Atoms/LabelledDropdown";
 import Button from "../Atoms/Button";
 
 export default function BoredAPIForm() {
-    const {setData, localData, setLocalData} = useContext(boredContext);
+    const {setData, localData, setLocalData} = useContext(boredAPIContext);
     const [activity, setActivity] = useState("random");
 
     // component list for display based on activity state

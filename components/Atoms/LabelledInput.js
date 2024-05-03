@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
-import { boredContext } from "../Context";
+import { boredAPIContext } from "../Context";
 
 export default function LabelledInput({type, id, text, placeholder, recommendation=true}) {
     const [input, setInput] = useState('');
-    const {localData} = useContext(boredContext);
+    const {localData} = useContext(boredAPIContext);
 
     const handleRecommendationClick = (e) => {
         setInput(e.currentTarget.value);
