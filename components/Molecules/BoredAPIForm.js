@@ -6,7 +6,7 @@ import LabelledDropDown from "../Atoms/LabelledDropdown";
 import Button from "../Atoms/Button";
 
 export default function BoredAPIForm() {
-    const {setData, localData, setLocalData} = useContext(boredAPIContext);
+    const {setData, setLocalData} = useContext(boredAPIContext);
     const [activity, setActivity] = useState("random");
     const RECOMMENDATION_NUM = 5;
 
@@ -41,14 +41,14 @@ export default function BoredAPIForm() {
             setLocalData(payload);
             return localStorage.setItem('i-am-bored', JSON.stringify(payload));
         }
+        let newLocalData = JSON.parse(JSON.stringify(JSON.parse(localStorage.getItem('i-am-bored'))));
         for (const [key, val] of Object.entries(payload)) {
-            let newLocalData = JSON.parse(JSON.stringify(JSON.parse(localStorage.getItem('i-am-bored'))));
             newLocalData[key] = [...new Set([...newLocalData[key], ...val])];
             if(newLocalData[key].length >= RECOMMENDATION_NUM-1)
                 newLocalData[key] = newLocalData[key].slice(1, RECOMMENDATION_NUM-1);
-            setLocalData(newLocalData);
-            localStorage.setItem('i-am-bored', JSON.stringify(newLocalData));
         }
+        setLocalData(newLocalData);
+        localStorage.setItem('i-am-bored', JSON.stringify(newLocalData));
     }
 
     const fetchData = async() => {

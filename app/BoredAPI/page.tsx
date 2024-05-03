@@ -10,7 +10,7 @@ export default function BoredAPIPage() {
     const [data, setData] = useState(null);
     
     useEffect(() => {
-        localStorage.hasOwnProperty('i-am-bored') && JSON.parse(localStorage.getItem('i-am-bored') || "");
+        localStorage.hasOwnProperty('i-am-bored') && setLocalData(JSON.parse(localStorage.getItem('i-am-bored') || ""))
     }, []);
 
     return (
@@ -20,6 +20,3 @@ export default function BoredAPIPage() {
         </boredAPIContext.Provider>
     );
 }
-
-
-//value={{data, setData, localData, setLocalData}}
