@@ -10,7 +10,7 @@ export default function BoredAPIPage() {
     const [data, setData] = useState(null);
     
     useEffect(() => {
-        localStorage.hasOwnProperty('iambored-users') && JSON.parse(localStorage.getItem('iambored-users') || "");
+        localStorage.hasOwnProperty('i-am-bored') && JSON.parse(localStorage.getItem('i-am-bored') || "");
     }, []);
 
     return (

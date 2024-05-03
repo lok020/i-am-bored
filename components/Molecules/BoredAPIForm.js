@@ -28,19 +28,19 @@ export default function BoredAPIForm() {
         let name = document.getElementById('name').value;
 
         // init if there are no users in localStorage
-        if (!localStorage.hasOwnProperty('iambored-users')){
+        if (!localStorage.hasOwnProperty('i-am-bored')){
             const payload = {name:[name]};
             setLocalData(payload);
-            return localStorage.setItem('iambored-users', JSON.stringify(payload));
+            return localStorage.setItem('i-am-bored', JSON.stringify(payload));
         }
         if(!localData.name.includes(name)){
-            setLocalData(JSON.parse(localStorage.getItem('iambored-users')));
+            setLocalData(JSON.parse(localStorage.getItem('i-am-bored')));
             let newLocalData = localData;
             if(localData.name.length >= 5)
                 newLocalData.name.shift();
             newLocalData.name.push(name);
             setLocalData(newLocalData);
-            localStorage.setItem('iambored-users', JSON.stringify(newLocalData));
+            localStorage.setItem('i-am-bored', JSON.stringify(newLocalData));
         }
     }
 
