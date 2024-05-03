@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react";
-import { navBarContext } from "../Context/Context";
+import { navBarContext } from "../Context";
 import Nav from "../Atoms/Nav";
 import { usePathname } from "next/navigation";
 

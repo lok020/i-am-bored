@@ -2,7 +2,7 @@
 
 export default function Home() {
   const title = "i-am-bored";
-  const intro = "This is an web application designed to cure your boredom. You may access them through clicking on the header above.";
+  const intro = "This is a web application designed to cure your boredom. You may access them through clicking on the header above.";
   const app1 = "BoredAPI - By answering a specific question, it will suggest you an activities.";
 
   return (

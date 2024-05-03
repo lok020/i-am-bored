@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { navBarContext } from "../Context/Context";
+import { navBarContext } from "../Context";
 import { useContext } from "react";
 
 export default function Nav({path="/", name=""}) {
