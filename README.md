@@ -10,4 +10,4 @@ List of navs:
 2. Open Terminal
 3. Change your current directory into the repo directory
 4. run `npm run dev`
-5. Open [http://localhost:3000](http://localhost:3000)
+5. Open [http://localhost:44](http://localhost:44)
