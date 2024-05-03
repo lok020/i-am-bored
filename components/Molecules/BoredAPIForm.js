@@ -8,6 +8,7 @@ import Button from "../Atoms/Button";
 export default function BoredAPIForm() {
     const {setData, localData, setLocalData} = useContext(boredAPIContext);
     const [activity, setActivity] = useState("random");
+    const RECOMMENDATION_NUM = 5;
 
     // component list for display based on activity state
     const component = {
@@ -20,25 +21,31 @@ export default function BoredAPIForm() {
 
     const handleOnSubmit = (e) => {
         e.preventDefault();
-        updateNameRecommendation();
+        updateRecommendation(e);
         fetchData();
     }
 
-    const updateNameRecommendation = () => {
-        let name = document.getElementById('name').value;
-
+    const updateRecommendation = (e) => {
+        const recommendationInputs = e.target.querySelectorAll('[id^="recommendation-"]');
+        let payload = {};
+        // loop all id with `recommendation-`, add them in payload 
+        for(let i=0; i<recommendationInputs.length; i++){
+            const inputId = recommendationInputs[i].id.split('recommendation-');
+            inputId.shift();
+            const id = inputId.join('');
+            const value = recommendationInputs[i].value;
+            id in payload ? payload[id].push(value) : payload[id] = [value];
+        }
         // init if there are no users in localStorage
         if (!localStorage.hasOwnProperty('i-am-bored')){
-            const payload = {name:[name]};
             setLocalData(payload);
             return localStorage.setItem('i-am-bored', JSON.stringify(payload));
         }
-        if(!localData.name.includes(name)){
-            setLocalData(JSON.parse(localStorage.getItem('i-am-bored')));
-            let newLocalData = localData;
-            if(localData.name.length >= 5)
-                newLocalData.name.shift();
-            newLocalData.name.push(name);
+        for (const [key, val] of Object.entries(payload)) {
+            let newLocalData = JSON.parse(JSON.stringify(JSON.parse(localStorage.getItem('i-am-bored'))));
+            newLocalData[key] = [...new Set([...newLocalData[key], ...val])];
+            if(newLocalData[key].length >= RECOMMENDATION_NUM-1)
+                newLocalData[key] = newLocalData[key].slice(1, RECOMMENDATION_NUM-1);
             setLocalData(newLocalData);
             localStorage.setItem('i-am-bored', JSON.stringify(newLocalData));
         }
@@ -84,7 +91,7 @@ export default function BoredAPIForm() {
 
     return (
         <form onSubmit={handleOnSubmit}>
-            <LabelledInput type='text' id='name' text='Your name:' placeholder='Enter your name'/>
+            <LabelledInput type='text' id='name' text='Your name:' placeholder='Enter your name' recommendation={true}/>
             <LabelledDropDown id='activity' text='What is the metric you want the activity based on?' list={["random", "participants", "accessibility", "price", "type"]} update={setActivity}/>
             <div className="py-3">{component[activity]}</div>
             <Button type='submit' text='Submit'/>
