@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {boredContext} from "../Context/Context";
+import {boredContext} from "../Context";
 import BoredAPIForm from "../Molecules/BoredAPIForm";
 import BoredAPIResult from "../Molecules/BoredAPIResult";
 

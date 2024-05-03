@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { boredContext } from "../Context/Context";
+import { boredContext } from "../Context";
 
 export default function LabelledInput({type, id, text, placeholder, recommendation=true}) {
     const [input, setInput] = useState('');

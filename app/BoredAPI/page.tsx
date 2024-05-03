@@ -1,12 +1,25 @@
 "use client"
 
-import React from "react";
-import BoredAPI from "@/components/Organisms/BoredAPI";
+import React, { useEffect, useState } from "react";
+import { boredContext } from "@/components/Context";
+import BoredAPIForm from "@/components/Molecules/BoredAPIForm";
+import BoredAPIResult from "@/components/Molecules/BoredAPIResult";
 
 export default function BoredAPIPage() {
+    const [localData, setLocalData] = useState({});
+    const [data, setData] = useState(null);
+    
+    useEffect(() => {
+        localStorage.hasOwnProperty('iambored-users') && JSON.parse(localStorage.getItem('iambored-users') || "");
+    }, []);
+
     return (
-        <>
-            <BoredAPI />
-        </>
+        <boredContext.Provider value={{data, setData, localData, setLocalData}}>
+            <BoredAPIForm />
+            {data && <BoredAPIResult />}
+        </boredContext.Provider>
     );
 }
+
+
+//value={{data, setData, localData, setLocalData}}

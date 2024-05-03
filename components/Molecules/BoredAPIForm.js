@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { boredContext } from "../Context/Context";
+import { boredContext } from "../Context";
 import LabelledInput from "../Atoms/LabelledInput";
 import LabelledSlider from "../Atoms/LabelledSlider";
 import LabelledDropDown from "../Atoms/LabelledDropdown";
