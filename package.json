@@ -6,6 +6,7 @@
     "dev": "next dev -p 44",
     "build": "next build",
     "start": "next start -p 44",
+    "build-start": "next build && next start -p 44",
     "lint": "next lint"
   },
   "dependencies": {
