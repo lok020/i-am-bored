@@ -1,7 +1,7 @@
 ## Introduction
-This is a Next.js project designed to cure your boredom. Each nav utilize different API(s) to give you entertainment.
+This is a Next.js project designed to cure your boredom. The whole project mimics the workflow in a real-world scenario, from setting up branches, code review, and push into different environments, to setting up GitHub rules & actions, and following proper braches naming scheme.
 
-List of navs:
+Each nav utilizes different API(s) to give you entertainment. The list of navs is as follows:
 - Home - Greeting page
 - [Bored API](https://www.boredapi.com/) - Answer a question and suggest you an activities
 
