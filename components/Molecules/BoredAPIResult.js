@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import { boredContext } from "../Context/Context";
+import { boredAPIContext } from "../Context";
 import Link from "next/link";
 
 export default function BoredAPIResult (){
-    const {data} = useContext(boredContext);
+    const {data} = useContext(boredAPIContext);
 
     return (
         <div className="grid">
