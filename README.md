@@ -9,5 +9,5 @@ List of navs:
 1. Clone repo to your machine
 2. Open Terminal
 3. Change your current directory into the repo directory
-4. run `npm run dev`
+4. run `npm run dev` or `npm run build-start`
 5. Open [http://localhost:44](http://localhost:44)
