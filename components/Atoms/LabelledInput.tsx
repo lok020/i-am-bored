@@ -1,11 +1,21 @@
 import React, { useState, useContext } from "react";
 import { boredAPIContext } from "../Context";
 
-export default function LabelledInput({type, id, text, placeholder, recommendation=false}) {
-    const [input, setInput] = useState('');
-    const {localData} = useContext(boredAPIContext);
+interface LabelledInputInterface {
+    type: string,
+    id: string,
+    text: string,
+    placeholder: string,
+    recommendation: boolean
+}
 
-    const handleRecommendationClick = (e) => {
+const LabelledInput:React.FC<LabelledInputInterface> = ({type, id, text, placeholder, recommendation=false}) => {
+    const [input, setInput] = useState('');
+    const { localData } = useContext(boredAPIContext);
+
+    console.log(localData);
+
+    const handleRecommendationClick = (e: React.ChangeEvent<HTMLInputElement>) => {
         setInput(e.currentTarget.value);
     }
 
@@ -37,3 +47,5 @@ export default function LabelledInput({type, id, text, placeholder, recommendati
         </div>
     );
 }
+
+export default LabelledInput;
