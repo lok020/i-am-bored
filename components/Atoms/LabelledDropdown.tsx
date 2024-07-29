@@ -1,6 +1,13 @@
 import React from "react";
 
-export default function LabelledDropdown({id, text, list=[], update}) {
+interface LabelledDropdownInterface {
+    id: string,
+    text: string,
+    list: Array<string>,
+    update: (value:string) => {}
+}
+
+const LabelledDropdown: React.FC<LabelledDropdownInterface> = ({id, text, list=[], update}) => {
     return (
         <div>
             <label htmlFor={id} className="pr-2">{text}</label>
@@ -10,3 +17,5 @@ export default function LabelledDropdown({id, text, list=[], update}) {
         </div>
     );
 }
+
+export default LabelledDropdown;
