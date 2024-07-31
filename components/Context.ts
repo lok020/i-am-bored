@@ -6,7 +6,7 @@ interface boredAPIContextFetchDataInterface {
 }
 
 interface boredAPIContextLocalDataInterface {
-    localData: {},
+    localData: { [key: string]: string[] },
     setLocalData: Dispatch<SetStateAction<{}>>;
 }
 
