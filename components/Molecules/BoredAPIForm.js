@@ -6,7 +6,7 @@ import LabelledDropDown from "../Atoms/LabelledDropdown";
 import Button from "../Atoms/Button";
 
 export default function BoredAPIForm() {
-    const {setData, setLocalData} = useContext(boredAPIContext);
+    const {setFetchData, setLocalData} = useContext(boredAPIContext);
     const [activity, setActivity] = useState("random");
     const RECOMMENDATION_NUM = 5;
 
@@ -81,11 +81,11 @@ export default function BoredAPIForm() {
             const res = await fetch(`${basedUrl}${additionalURL}`);
             if(res.ok){
                 const data = await res.json();
-                setData(data);
+                setFetchData(data);
             }
         }catch(err){
             console.error('Error: ', err);
-            setData(err);
+            setFetchData(err);
         }
     }
 

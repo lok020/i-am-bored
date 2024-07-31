@@ -1,11 +1,14 @@
 import { createContext } from "react";
 
-interface borderAPIContextInterface {
-    data: {},
-    setData: () => {},
+interface boredAPIContextFetchDataInterface {
+    fetchData: null,
+    setFetchData: () => {}
+}
+
+interface boredAPIContextLocalDataInterface {
     localData: {},
     setLocalData: () => {}
-};
+}
 
-export const boredAPIContext = createContext<borderAPIContextInterface | {}>({});
+export const boredAPIContext = createContext<boredAPIContextFetchDataInterface | boredAPIContextLocalDataInterface | {}>({});
 export const navBarContext = createContext({});

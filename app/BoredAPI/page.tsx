@@ -7,16 +7,16 @@ import BoredAPIResult from "@/components/Molecules/BoredAPIResult";
 
 export default function BoredAPIPage() {
     const [localData, setLocalData] = useState({});
-    const [data, setData] = useState(null);
+    const [fetchData, setFetchData] = useState(null);
     
     useEffect(() => {
         localStorage.hasOwnProperty('i-am-bored') && setLocalData(JSON.parse(localStorage.getItem('i-am-bored') || ""))
     }, []);
 
     return (
-        <boredAPIContext.Provider value={{data, setData, localData, setLocalData}}>
+        <boredAPIContext.Provider value={{fetchData, setFetchData, localData, setLocalData}}>
             <BoredAPIForm />
-            {data && <BoredAPIResult />}
+            {fetchData && <BoredAPIResult />}
         </boredAPIContext.Provider>
     );
 }
