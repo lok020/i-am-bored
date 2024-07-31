@@ -91,7 +91,7 @@ export default function BoredAPIForm() {
 
     return (
         <form onSubmit={handleOnSubmit}>
-            <LabelledInput type='text' id='name' text='Your name:' placeholder='Enter your name' recommendation={true}/>
+            <LabelledInput type='text' id='name' text='Your name:' placeholder='Enter your name' recommend={true}/>
             <LabelledDropDown id='activity' text='What is the metric you want the activity based on?' list={["random", "participants", "accessibility", "price", "type"]} update={setActivity}/>
             <div className="py-3">{component[activity]}</div>
             <Button type='submit' text='Submit'/>

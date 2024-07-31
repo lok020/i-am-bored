@@ -1,14 +1,16 @@
-import { createContext } from "react";
+import { createContext, Dispatch, SetStateAction } from "react";
 
 interface boredAPIContextFetchDataInterface {
-    fetchData: null,
-    setFetchData: () => {}
+    fetchData: {},
+    setFetchData: Dispatch<SetStateAction<{}>>;
 }
 
 interface boredAPIContextLocalDataInterface {
     localData: {},
-    setLocalData: () => {}
+    setLocalData: Dispatch<SetStateAction<{}>>;
 }
 
-export const boredAPIContext = createContext<boredAPIContextFetchDataInterface | boredAPIContextLocalDataInterface | {}>({});
+interface boredAPIContextInterface extends boredAPIContextFetchDataInterface, boredAPIContextLocalDataInterface {}
+
+export const boredAPIContext = createContext({} as boredAPIContextInterface);
 export const navBarContext = createContext({});

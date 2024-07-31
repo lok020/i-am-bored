@@ -7,7 +7,7 @@ import BoredAPIResult from "@/components/Molecules/BoredAPIResult";
 
 export default function BoredAPIPage() {
     const [localData, setLocalData] = useState({});
-    const [fetchData, setFetchData] = useState(null);
+    const [fetchData, setFetchData] = useState({});
     
     useEffect(() => {
         localStorage.hasOwnProperty('i-am-bored') && setLocalData(JSON.parse(localStorage.getItem('i-am-bored') || ""))
