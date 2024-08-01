@@ -6,7 +6,7 @@ import LabelledDropDown from "../Atoms/LabelledDropdown";
 import Button from "../Atoms/Button";
 
 export default function BoredAPIForm() {
-    const {setData, setLocalData} = useContext(boredAPIContext);
+    const {setFetchData, setLocalData} = useContext(boredAPIContext);
     const [activity, setActivity] = useState("random");
     const RECOMMENDATION_NUM = 5;
 
@@ -81,17 +81,17 @@ export default function BoredAPIForm() {
             const res = await fetch(`${basedUrl}${additionalURL}`);
             if(res.ok){
                 const data = await res.json();
-                setData(data);
+                setFetchData(data);
             }
         }catch(err){
             console.error('Error: ', err);
-            setData(err);
+            setFetchData(err);
         }
     }
 
     return (
         <form onSubmit={handleOnSubmit}>
-            <LabelledInput type='text' id='name' text='Your name:' placeholder='Enter your name' recommendation={true}/>
+            <LabelledInput type='text' id='name' text='Your name:' placeholder='Enter your name' recommend={true}/>
             <LabelledDropDown id='activity' text='What is the metric you want the activity based on?' list={["random", "participants", "accessibility", "price", "type"]} update={setActivity}/>
             <div className="py-3">{component[activity]}</div>
             <Button type='submit' text='Submit'/>
