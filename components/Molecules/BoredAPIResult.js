@@ -3,13 +3,13 @@ import { boredAPIContext } from "../Context";
 import Link from "next/link";
 
 export default function BoredAPIResult (){
-    const {data} = useContext(boredAPIContext);
+    const {fetchData} = useContext(boredAPIContext);
 
     return (
         <div className="grid">
-            {data.error && <>{`Error: ${data.error}`}</>}
-            {data.activity}
-            {data.link && <Link href={data.link} target="_blank">{data.link}</Link>}
+            {fetchData.error && <>{`Error: ${fetchData.error}`}</>}
+            {fetchData.activity}
+            {fetchData.link && <Link href={fetchData.link} target="_blank">{fetchData.link}</Link>}
         </div>
     );
 }

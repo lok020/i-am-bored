@@ -1,6 +1,16 @@
 import React from "react";
 
-export default function LabelledSlider({id, text, min, max, minText, maxText, step}) {
+interface LabelledSliderInterface {
+    id: string,
+    text: string,
+    min: number,
+    max: number,
+    minText: string,
+    maxText: string,
+    step: number
+}
+
+const LabelledSlider:React.FC<LabelledSliderInterface> = ({id, text, min, max, minText, maxText, step}) => {
 
     return (
         <div className="py-1">
@@ -11,3 +21,5 @@ export default function LabelledSlider({id, text, min, max, minText, maxText, st
         </div>
     );
 }
+
+export default LabelledSlider;
