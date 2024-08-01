@@ -13,4 +13,10 @@ interface boredAPIContextLocalDataInterface {
 interface boredAPIContextInterface extends boredAPIContextFetchDataInterface, boredAPIContextLocalDataInterface {}
 
 export const boredAPIContext = createContext({} as boredAPIContextInterface);
-export const navBarContext = createContext({});
+
+interface navBarContextInterface {
+    curNav: string,
+    setCurNav: Dispatch<SetStateAction<{}>>;
+}
+
+export const navBarContext = createContext({} as navBarContextInterface);
