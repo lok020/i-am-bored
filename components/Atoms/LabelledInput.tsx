@@ -43,14 +43,14 @@ const LabelledInput:React.FC<LabelledInputInterface> = ({type, id, text, placeho
             <div className="inline-flex mt-1">
                 {hasRecommendationID() &&
                 localData[id].map((recommendationStr:string) => hasRecommendationString(recommendationStr) &&
-                    <button key={recommendationStr} className="flex hover:invert" value={recommendationStr} onClick={handleRecommendationClick}>
+                    <>  
                         <div className={`text-sky-300`}>
                             &#9668;
                         </div>
-                        <div className={`px-1 bg-sky-300 rounded-md`}>
-                            <div>{recommendationStr}</div>
-                        </div>
-                    </button>
+                        <button key={recommendationStr} className="flex hover:invert px-1 bg-sky-300 rounded-md" value={recommendationStr} onClick={handleRecommendationClick}>
+                            {recommendationStr}
+                        </button>
+                    </>
                 )}
             </div>
         </div>
