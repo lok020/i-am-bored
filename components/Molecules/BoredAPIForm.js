@@ -52,7 +52,7 @@ export default function BoredAPIForm() {
     }
 
     const fetchData = async() => {
-        const basedUrl = "http://www.boredapi.com/api/activity";
+        const basedUrl = "https://www.boredapi.com/api/activity";
 
         // get the additional query based on picked activity
         let additionalURL = "";
