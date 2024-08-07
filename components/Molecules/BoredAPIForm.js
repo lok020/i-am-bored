@@ -78,7 +78,7 @@ export default function BoredAPIForm() {
         }
 
         try{
-            const res = await fetch(`${basedUrl}${additionalURL}`);
+            const res = await fetch(`${basedUrl}${additionalURL}`,{mode: 'no-cors'});
             if(res.ok){
                 const data = await res.json();
                 setFetchData(data);
