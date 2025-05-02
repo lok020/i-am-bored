@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { navBarContext } from "../Context";
+import { navBarContext } from "../../context/NavBarContext";
 import { useContext } from "react";
 
 interface NavInterface {

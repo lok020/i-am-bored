@@ -1,8 +1,8 @@
 export default function notFound() {
     return(
-        <div>
+        <div className="font-mono text-black/60">
             <h1>Page not found</h1>
-            <p>The url can not be found</p>
+            <p>This path is not going to cure your boredom. Try to access other path by clicking on the header above.</p>
         </div>
     );
 }
