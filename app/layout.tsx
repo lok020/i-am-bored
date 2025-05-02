@@ -15,15 +15,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const navs = [
-    {path:"/", name: "Home"},
-    {path:"/BoredAPI", name: "BoredAPI"},
-  ];
-
   return (
     <html lang="en">
       <body className={inter.className} suppressHydrationWarning={true}>
-        <NavBar navs={navs}/>
+        <NavBar/>
         <div className={"mt-2 p-3 bg-neutral-100 rounded-lg"}>{children}</div>
       </body>
     </html>
