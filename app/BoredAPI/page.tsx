@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useEffect, useState } from "react";
-import { boredAPIContext } from "@/components/Context";
+import { boredAPIContext } from "@/context/BoredAPIContext";
 // import BoredAPIForm from "@/components/Molecules/BoredAPIForm";
 // import BoredAPIResult from "@/components/Molecules/BoredAPIResult";
 

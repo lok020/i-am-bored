@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { boredAPIContext } from "../Context";
+import { boredAPIContext } from "../../context/BoredAPIContext";
 
 interface LabelledInputInterface {
     type: string,

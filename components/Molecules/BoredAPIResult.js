@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { boredAPIContext } from "../Context";
+import { boredAPIContext } from "../../context/BoredAPIContext";
 import Link from "next/link";
 
 export default function BoredAPIResult (){
