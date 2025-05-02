@@ -2,8 +2,8 @@
 
 import React, { useEffect, useState } from "react";
 import { boredAPIContext } from "@/components/Context";
-import BoredAPIForm from "@/components/Molecules/BoredAPIForm";
-import BoredAPIResult from "@/components/Molecules/BoredAPIResult";
+// import BoredAPIForm from "@/components/Molecules/BoredAPIForm";
+// import BoredAPIResult from "@/components/Molecules/BoredAPIResult";
 
 export default function BoredAPIPage() {
     const [localData, setLocalData] = useState({});
